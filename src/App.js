@@ -3,46 +3,16 @@ import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import Nav from './components/Nav';
+import Table from './components/Table';
 
 function App() {
   return (
-    <div className="container">
-      <header className="text-center">
-        <h1>Employee Directory</h1>
-      </header>
-      <hr/>
+    <div className="card text-center">
+      <div className="card-header bg-primary text-white">
+        Employee Directory
+      </div>
       <Nav />
-      <hr/>
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Location</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>Houston, TX</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>Indianapolis, IN</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>French Lick, IN</td>
-          </tr>
-        </tbody>
-      </table>
+      <Table />
       <footer className="footer footer-dark bg-dark">
         <div className="container">
           <strong>Brien Barr</strong><br/>
