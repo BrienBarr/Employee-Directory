@@ -1,14 +1,8 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import logo from './logo.svg';
+import React from 'react';
+// import { Link } from "react-router-dom";
+// import logo from './logo.svg';
 import './App.css';
-
-
-// const styles = {
-//   container: {
-//     width: 100 + "%"
-//   }
-// }
+import Nav from './components/Nav';
 
 function App() {
   return (
@@ -17,26 +11,7 @@ function App() {
         <h1>Employee Directory</h1>
       </header>
       <hr/>
-      <nav className="navbar navbar-light bg-light d-flex justify-content-center">
-        <form className="form-inline">
-          <input 
-          className="form-control mr-sm-2" 
-          type="search" 
-          placeholder="Search" 
-          aria-label="Search"
-          />
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-        <form className="form-inline">
-          <input 
-          className="form-control mr-sm-2" 
-          type="search" 
-          placeholder="Search" 
-          aria-label="Search"
-          />
-          <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
-      </nav>
+      <Nav />
       <hr/>
       <table className="table">
         <thead>
@@ -71,9 +46,6 @@ function App() {
       <footer className="footer footer-dark bg-dark">
         <div className="container">
           <strong>Brien Barr</strong><br/>
-          {/* <Link className="navbar-brand" to="mailto:brien.barr3320@gmail.com">
-          brien.barr3320@gmail.com
-          </Link> */}
           <br/>
           PH: 317-910-6049
         </div>
