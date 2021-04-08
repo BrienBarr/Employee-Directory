@@ -27,7 +27,7 @@ class App extends React.Component {
           Employee Directory
         </div>
         <Nav />
-        <Table />
+        <Table employees={this.state.employees}/>
         <footer className="footer footer-dark bg-dark">
           <div className="container">
             <strong>Brien Barr</strong><br/>
