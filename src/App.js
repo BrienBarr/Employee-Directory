@@ -10,6 +10,8 @@ class App extends React.Component {
 
   state = {
     employees: [],
+    search: "",
+    searchResults: [],
     error: ""
   };
 
@@ -19,6 +21,23 @@ class App extends React.Component {
       .catch(err => console.log(err));
   }
 
+  handleInputChange = event => {
+    console.log(event.target.value)
+    this.setState({ search: event.target.value });
+  };
+
+  handleFormSubmit = event => {
+    event.preventDefault();
+    API.getEmployeesByName(this.state.search, this.state.employees, this.state.searchResults)
+      .then(res => {
+        if (res.data.status === "error") {
+          throw new Error(res.data.message);
+        }
+        this.setState({ searchResults: res.data.message, error: "" });
+      })
+      .catch(err => this.setState({ error: err.message }));
+  };
+
   render() {
     console.log(this.state);
     return (
@@ -26,8 +45,14 @@ class App extends React.Component {
         <div className="card-header bg-primary text-white">
           Employee Directory
         </div>
-        <Nav />
-        <Table employees={this.state.employees}/>
+        <Nav 
+          employees = {this.state.employees}
+          search = {this.state.search}
+          searchResults = {this.state.searchResults}
+          handleInputChange = {this.handleInputChange}
+          handleFormSubmit = {this.handleFormSubmit}
+        />
+        <Table employees = {this.state.employees}/>
         <footer className="footer footer-dark bg-dark">
           <div className="container">
             <strong>Brien Barr</strong><br/>
