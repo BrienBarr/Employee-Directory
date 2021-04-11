@@ -3,7 +3,7 @@ import React from "react";
 function Nav (props) {
   return(
     <nav className="navbar navbar-light bg-light d-flex justify-content-center">
-        <form className="form-inline">
+        <form className="form-inline" onSubmit={props.handleFormSubmit}>
           <input 
             className="form-control mr-sm-2" 
             type="search" 
@@ -14,7 +14,6 @@ function Nav (props) {
           <button 
             className="btn btn-outline-success my-2 my-sm-0" 
             type="submit"
-            // onSubmit={props.handleFormSubmit()}
           >
             Search
           </button>
