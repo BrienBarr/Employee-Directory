@@ -10,6 +10,7 @@ class App extends React.Component {
 
   state = {
     employees: [],
+    allEmployees: [],
     search: "",
     searchResults: [],
     error: ""
@@ -17,7 +18,10 @@ class App extends React.Component {
 
   componentDidMount() {
     API.getEmployees()
-      .then(res => this.setState({ employees: res.data.results }))
+      .then(res => {
+        this.setState({ employees: res.data.results });
+        this.setState({ allEmployees: res.data.results });
+      })
       .catch(err => console.log(err));
   }
 
@@ -31,10 +35,19 @@ class App extends React.Component {
     event.preventDefault();
     
     let filtered_emp = this.state.employees.filter( emp => {
-      return true;
+      if(emp.name.first === this.state.search || emp.name.last === this.state.search){
+        return emp;
+      }
+      // return true;
     });
-
-    this.setState({employees: filtered_emp} );
+    console.log(filtered_emp);
+    if(filtered_emp.length === 0){
+      this.setState({ employees: this.state.allEmployees });
+    } else {
+      this.setState({employees: filtered_emp} );
+      console.log(this.state.employees);
+    }
+    
   };
 
   render() {
