@@ -27,15 +27,14 @@ class App extends React.Component {
   };
 
   handleFormSubmit = event => {
+    
     event.preventDefault();
-    API.getEmployeesByName(this.state.search, this.state.employees, this.state.searchResults)
-      .then(res => {
-        if (res.data.status === "error") {
-          throw new Error(res.data.message);
-        }
-        this.setState({ searchResults: res.data.message, error: "" });
-      })
-      .catch(err => this.setState({ error: err.message }));
+    
+    let filtered_emp = this.state.employees.filter( emp => {
+      return true;
+    });
+
+    this.setState({employees: filtered_emp} );
   };
 
   render() {
