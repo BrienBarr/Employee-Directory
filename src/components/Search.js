@@ -17,6 +17,13 @@ function Search (props) {
           >
             Search
           </button>
+          <button 
+            className="btn btn-outline-primary my-2 my-sm-0" 
+            type=""
+            onClick={props.resetSearch}
+          >
+            Reset
+          </button>
         </form>
       </nav>
   )

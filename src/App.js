@@ -47,6 +47,14 @@ class App extends React.Component {
       console.log(this.state.employees);
     }
     
+    // event.target.reset();
+  };
+
+  resetSearch = event => {
+    event.preventDefault();
+    // console.log(event);
+    this.setState({ employees: this.state.allEmployees });
+    event.target.parentElement[0].value = "";
   };
 
   render() {
@@ -62,6 +70,7 @@ class App extends React.Component {
           searchResults = {this.state.searchResults}
           handleInputChange = {this.handleInputChange}
           handleFormSubmit = {this.handleFormSubmit}
+          resetSearch = {this.resetSearch}
         />
         <Table employees = {this.state.employees}/>
         <footer className="footer footer-dark bg-dark">
