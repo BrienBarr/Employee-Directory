@@ -38,7 +38,6 @@ class App extends React.Component {
       if(emp.name.first === this.state.search || emp.name.last === this.state.search){
         return emp;
       }
-      // return true;
     });
     console.log(filtered_emp);
     if(filtered_emp.length === 0){
@@ -67,9 +66,7 @@ class App extends React.Component {
         <Table employees = {this.state.employees}/>
         <footer className="footer footer-dark bg-dark">
           <div className="container">
-            <strong>Brien Barr</strong><br/>
-            <br/>
-            PH: 317-910-6049
+            <strong>Created by Brien Barr 2021</strong>
           </div>
         </footer>
     </div>
