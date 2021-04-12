@@ -3,7 +3,7 @@ import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
 import API from './utils/API'
-import Nav from './components/Nav';
+import Search from './components/Search';
 import Table from './components/Table';
 
 class App extends React.Component {
@@ -55,9 +55,9 @@ class App extends React.Component {
     return (
       <div className="card text-center">
         <div className="card-header bg-primary text-white">
-          Employee Directory
+          <h1>Employee Directory</h1>
         </div>
-        <Nav 
+        <Search 
           employees = {this.state.employees}
           search = {this.state.search}
           searchResults = {this.state.searchResults}
