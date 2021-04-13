@@ -1,6 +1,4 @@
 import React from 'react';
-// import { Link } from "react-router-dom";
-// import logo from './logo.svg';
 import './App.css';
 import API from './utils/API'
 import Search from './components/Search';
@@ -11,9 +9,7 @@ class App extends React.Component {
   state = {
     employees: [],
     allEmployees: [],
-    filter: "",
     search: "",
-    searchResults: [],
     error: ""
   };
 
@@ -31,34 +27,11 @@ class App extends React.Component {
     this.setState({ search: event.target.value });
   };
 
-  handleFilterChange = event => {
-    console.log(event);
-    let newFilter;
-    switch (event.target.value){
-      case 'First Name':
-        newFilter = 'first'
-        break;
-      case 'Last Name':
-        newFilter = 'last'
-        break;
-      case 'City':
-        newFilter = 'city'
-        break;
-      case 'State':
-        newFilter = 'state'
-        break;
-      default:
-        newFilter = 'last'
-    }
-      this.setState({filter: newFilter});
-  }
-
   handleFormSubmit = event => {
-    
     event.preventDefault();
     
     let filtered_emp = this.state.employees.filter( emp => {
-      if(emp.name.first === this.state.search || emp.name.last === this.state.search){
+      if(emp.name.first.includes(this.state.search) || emp.name.last.includes(this.state.search)){
         return emp;
       }
       return false;
@@ -71,19 +44,17 @@ class App extends React.Component {
       this.setState({employees: filtered_emp} );
       console.log(this.state.employees);
     }
-    
-    // event.target.reset();
+
   };
 
   resetSearch = event => {
     event.preventDefault();
-    // console.log(event);
     this.setState({ employees: this.state.allEmployees });
+    this.setState({ search: "" });
     event.target.parentElement[0].value = "";
   };
 
   render() {
-    console.log(this.state);
     return (
       <div className="card text-center">
         <div className="card-header bg-primary text-white">
@@ -94,7 +65,6 @@ class App extends React.Component {
           search = {this.state.search}
           searchResults = {this.state.searchResults}
           handleInputChange = {this.handleInputChange}
-          handleFilterChange = {this.handleFilterChange}
           handleFormSubmit = {this.handleFormSubmit}
           resetSearch = {this.resetSearch}
         />
