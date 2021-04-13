@@ -4,6 +4,17 @@ function Search (props) {
   return(
     <nav className="navbar navbar-light bg-light d-flex justify-content-center">
         <form className="form-inline" onSubmit={props.handleFormSubmit}>
+        <label htmlFor="formControlSelect1">Filter By: </label>
+        <select 
+          className="form-control" 
+          id="formControlSelect1"
+          onChange={props.handleFilterChange}
+        >
+          <option>Last Name</option>
+          <option>First Name</option>
+          <option>City</option>
+          <option>State</option>
+        </select>
           <input 
             className="form-control mr-sm-2" 
             type="search" 

@@ -11,6 +11,7 @@ class App extends React.Component {
   state = {
     employees: [],
     allEmployees: [],
+    filter: "",
     search: "",
     searchResults: [],
     error: ""
@@ -30,6 +31,28 @@ class App extends React.Component {
     this.setState({ search: event.target.value });
   };
 
+  handleFilterChange = event => {
+    console.log(event);
+    let newFilter;
+    switch (event.target.value){
+      case 'First Name':
+        newFilter = 'first'
+        break;
+      case 'Last Name':
+        newFilter = 'last'
+        break;
+      case 'City':
+        newFilter = 'city'
+        break;
+      case 'State':
+        newFilter = 'state'
+        break;
+      default:
+        newFilter = 'last'
+    }
+      this.setState({filter: newFilter});
+  }
+
   handleFormSubmit = event => {
     
     event.preventDefault();
@@ -38,7 +61,9 @@ class App extends React.Component {
       if(emp.name.first === this.state.search || emp.name.last === this.state.search){
         return emp;
       }
+      return false;
     });
+
     console.log(filtered_emp);
     if(filtered_emp.length === 0){
       this.setState({ employees: this.state.allEmployees });
@@ -69,6 +94,7 @@ class App extends React.Component {
           search = {this.state.search}
           searchResults = {this.state.searchResults}
           handleInputChange = {this.handleInputChange}
+          handleFilterChange = {this.handleFilterChange}
           handleFormSubmit = {this.handleFormSubmit}
           resetSearch = {this.resetSearch}
         />
