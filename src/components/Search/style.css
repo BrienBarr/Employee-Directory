@@ -1,0 +1,21 @@
+nav {
+  background-color: #c5c5c5;
+}
+
+input {
+  margin-right: 5px;
+}
+
+.btn {
+  margin-right: 5px;
+  color: black;
+}
+
+.btn-primary {
+  color: black;
+  background-color:indianred
+}
+
+.btn-danger {
+  color: black;
+}
