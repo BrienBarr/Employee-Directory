@@ -10,7 +10,8 @@ class App extends React.Component {
     employees: [],
     allEmployees: [],
     search: "",
-    error: ""
+    error: "",
+    message: ""
   };
 
   componentDidMount() {
@@ -40,6 +41,7 @@ class App extends React.Component {
     console.log(filtered_emp);
     if(filtered_emp.length === 0){
       this.setState({ employees: this.state.allEmployees });
+      this.setState({ message: 'No results found.' })
     } else {
       this.setState({employees: filtered_emp} );
       console.log(this.state.employees);
@@ -51,6 +53,7 @@ class App extends React.Component {
     event.preventDefault();
     this.setState({ employees: this.state.allEmployees });
     this.setState({ search: "" });
+    this.setState({ message: "" });
     event.target.parentElement[0].value = "";
   };
 
@@ -67,6 +70,7 @@ class App extends React.Component {
           handleInputChange = {this.handleInputChange}
           handleFormSubmit = {this.handleFormSubmit}
           resetSearch = {this.resetSearch}
+          message = {this.state.message}
         />
         <Table employees = {this.state.employees}/>
         <footer className="footer footer-dark bg-dark">
