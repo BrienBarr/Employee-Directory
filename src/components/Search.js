@@ -1,8 +1,10 @@
 import React from "react";
+import Alert from "./Alert"
 
 function Search (props) {
   return(
-    <nav className="navbar navbar-light bg-light d-flex justify-content-center">
+    <div>
+      <nav className="navbar navbar-light bg-light d-flex justify-content-center">
         <form className="form-inline" onSubmit={props.handleFormSubmit}>
           <input 
             className="form-control mr-sm-2" 
@@ -26,6 +28,8 @@ function Search (props) {
           </button>
         </form>
       </nav>
+      <Alert message={props.message}></Alert>
+    </div>
   )
 }
 
