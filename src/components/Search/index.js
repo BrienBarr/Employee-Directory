@@ -2,10 +2,10 @@ import React from "react";
 import Alert from "../Alert"
 import "./style.css";
 
-const btnCss = {
-  color: 'black',
-  'background-color':'indianred'
-};
+// const btnCss = {
+//   color: 'black',
+//   'background-color':'indianred'
+// };
 
 function Search (props) {
   return(
@@ -22,7 +22,7 @@ function Search (props) {
           <button 
             className="btn btn-success my-2 my-sm-0" 
             type="submit"
-            style = {btnCss}
+            // style = {btnCss}
           >
             Search
           </button>
