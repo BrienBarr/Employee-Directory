@@ -15,7 +15,7 @@ function Search (props) {
             onChange={props.handleInputChange}
           />
           <button 
-            className="btn btn-primary my-2 my-sm-0" 
+            className="btn btn-success my-2 my-sm-0" 
             type="submit"
           >
             Search

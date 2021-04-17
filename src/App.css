@@ -7,11 +7,11 @@
   pointer-events: none;
 }
 
-/* .card {
-  width: 100%;
-  margin-left: 10px;
-  margin-right: auto;
-} */
+.footer {
+  height: 50px;
+  padding-top: 10px;
+  color: white;
+}
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
