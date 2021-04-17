@@ -59,7 +59,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="card text-center">
+      <div className="card w-100 text-center">
         <div className="card-header bg-primary text-white">
           <h1>Employee Directory</h1>
         </div>

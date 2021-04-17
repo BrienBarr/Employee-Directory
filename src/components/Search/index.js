@@ -1,10 +1,11 @@
 import React from "react";
-import Alert from "./Alert"
+import Alert from "../Alert"
+import "./style.css";
 
 function Search (props) {
   return(
     <div>
-      <nav className="navbar navbar-light bg-light d-flex justify-content-center">
+      <nav className="navbar d-flex justify-content-center">
         <form className="form-inline" onSubmit={props.handleFormSubmit}>
           <input 
             className="form-control mr-sm-2" 
@@ -14,13 +15,13 @@ function Search (props) {
             onChange={props.handleInputChange}
           />
           <button 
-            className="btn btn-outline-primary my-2 my-sm-0" 
+            className="btn btn-success my-2 my-sm-0" 
             type="submit"
           >
             Search
           </button>
           <button 
-            className="btn btn-outline-primary my-2 my-sm-0" 
+            className="btn btn-danger my-2 my-sm-0" 
             type=""
             onClick={props.resetSearch}
           >
