@@ -8,10 +8,7 @@ class App extends React.Component {
 
   state = {
     employees: [],
-    allEmployees: [],
-    search: "",
-    error: "",
-    message: ""
+    filter: "",
   };
 
   componentDidMount() {
@@ -25,36 +22,25 @@ class App extends React.Component {
 
   handleInputChange = event => {
     console.log(event.target.value)
-    this.setState({ search: event.target.value });
+    this.setState({ filter: event.target.value });
   };
+
+  filterEmployees = () => {
+    if(this.state.filter === ""){
+      return this.state.employees;
+    } else {
+      let filtered_employees = this.state.employees.filter( emp => {
+        let filter = this.state.filter.toLowerCase();
+        let firstName = emp.name.first.toLowerCase();
+        let lastName = emp.name.last.toLowerCase();
+        return firstName.includes(filter) || lastName.includes(filter);
+      });
+      return filtered_employees;
+    }
+  }
 
   handleFormSubmit = event => {
     event.preventDefault();
-    
-    let filtered_emp = this.state.employees.filter( emp => {
-      if(emp.name.first.includes(this.state.search) || emp.name.last.includes(this.state.search)){
-        return emp;
-      }
-      return false;
-    });
-
-    console.log(filtered_emp);
-    if(filtered_emp.length === 0){
-      this.setState({ employees: this.state.allEmployees });
-      this.setState({ message: 'No results found.' })
-    } else {
-      this.setState({employees: filtered_emp} );
-      console.log(this.state.employees);
-    }
-
-  };
-
-  resetSearch = event => {
-    event.preventDefault();
-    this.setState({ employees: this.state.allEmployees });
-    this.setState({ search: "" });
-    this.setState({ message: "" });
-    event.target.parentElement[0].value = "";
   };
 
   render() {
@@ -64,15 +50,12 @@ class App extends React.Component {
           <h1>Employee Directory</h1>
         </div>
         <Search 
-          employees = {this.state.employees}
-          search = {this.state.search}
-          searchResults = {this.state.searchResults}
-          handleInputChange = {this.handleInputChange}
+          employees = {this.filterEmployees()}
+          filter = {this.state.filter}
           handleFormSubmit = {this.handleFormSubmit}
-          resetSearch = {this.resetSearch}
-          message = {this.state.message}
+          handleInputChange = {this.handleInputChange}
         />
-        <Table employees = {this.state.employees}/>
+        <Table employees = {this.filterEmployees()}/>
         <footer className="footer footer-dark bg-dark">
           <div className="container">
             <strong>Created by Brien Barr 2021</strong>
