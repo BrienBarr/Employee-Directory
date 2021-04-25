@@ -1,41 +1,37 @@
 import React from "react";
 import Alert from "../Alert"
-import "./style.css";
-
-// const btnCss = {
-//   color: 'black',
-//   'background-color':'indianred'
-// };
 
 function Search (props) {
+  
+  const styles = {
+    nav: {
+      backgroundColor: "#c5c5c5"
+    },
+    
+    input: {
+      marginRight: "5px",
+      width: "230px"
+    }
+  }
+
   return(
     <div>
-      <nav className="navbar d-flex justify-content-center">
+      <nav className="navbar d-flex justify-content-center" style={styles.nav}>
         <form className="form-inline" onSubmit={props.handleFormSubmit}>
           <input 
             className="form-control mr-sm-2" 
+            style={styles.input}
             type="search" 
-            placeholder="Search By Name" 
-            aria-label="Search By Name"
+            placeholder="Filter By First or Last Name" 
+            aria-label="Filter By First or Last Name"
             onChange={props.handleInputChange}
           />
-          <button 
-            className="btn btn-success my-2 my-sm-0" 
-            type="submit"
-            // style = {btnCss}
-          >
-            Search
-          </button>
-          <button 
-            className="btn btn-danger my-2 my-sm-0" 
-            type=""
-            onClick={props.resetSearch}
-          >
-            Reset
-          </button>
         </form>
       </nav>
-      <Alert message={props.message}></Alert>
+      <Alert 
+        message={props.employees.length === 0 ? "No results found." : ""}
+      >
+      </Alert>
     </div>
   )
 }
